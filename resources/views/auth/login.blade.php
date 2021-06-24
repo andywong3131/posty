@@ -25,7 +25,10 @@
           <div class="text-red-500">{{ $message }}</div>
         @enderror
       </div>
-
+      <div class="mb-5">
+          <input type="checkbox" name="remember" id="remember" class="mr-1">
+          <label for="remember">Remember Me</label>
+      </div>
       <button class="p-5 bg-blue-500 w-full text-white font-medium rounded-lg">Login</button>
     </form>
   </div>
