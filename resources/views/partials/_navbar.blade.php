@@ -1,7 +1,7 @@
 <nav class="bg-black flex justify-between">
   <ul class="flex text-gray-300">
     <li class="m-5"><a href="{{ route('home') }}">Home</a></li>
-    <li class="m-5"><a href="">Dashboard</a></li>
+    <li class="m-5"><a href="{{ route('dashboard') }}">Dashboard</a></li>
     <li class="m-5"><a href="">Posts</a></li>
   </ul>
 
