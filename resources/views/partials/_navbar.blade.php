@@ -7,7 +7,7 @@
 
   <ul class="flex text-gray-300">
     @guest
-      <li class="m-5"><a href="">Login</a></li>
+      <li class="m-5"><a href="{{ route('login') }}">Login</a></li>
       <li class="m-5"><a href="{{ route('register') }}">Register</a></li>
     @endguest
 
