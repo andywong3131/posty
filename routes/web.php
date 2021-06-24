@@ -6,10 +6,14 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\PostController;
 
 Route::get('/', HomeController::class)->name('home');
 
 Route::get('/dashboard', DashboardController::class)->name('dashboard');
+
+Route::get('/posts', [PostController::class, 'index'])->name('posts');
+Route::post('/posts', [PostController::class, 'store']);
 
 
 Route::get('/register', [RegisterController::class, 'create'])->name('register');
