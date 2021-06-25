@@ -20,18 +20,38 @@
       </form>
     @endauth
 
-    @if ($posts->count())
-      @foreach ($posts as $post)
-        <div class="mb-5">
-          <a href="" class="font-bold">{{ $post->user->name }}</a>
-          <span> {{ $post->created_at->diffForHumans() }}</span>
-          <p>{{ $post->body }}</p>
-        </div>
-      @endforeach
-      {{ $posts->links() }}
-    @else
+    @forelse ($posts as $post)
+      <div class="mb-5">
+        <a href="" class="font-bold">{{ $post->user->name }}</a>
+
+        <span class="text-sm"> {{ $post->created_at->diffForHumans() }}</span>
+
+        <p>{{ $post->body }}</p>
+
+        @auth
+          @if ($post->likedBy(auth()->user()))
+            <form action="{{ route('posts.unlike', $post) }}" method="POST" class="inline">
+              @csrf
+
+              @method('DELETE')
+              <button class="text-blue-500">Unlike</button>
+            </form>
+          @else
+            <form action="{{ route('posts.like', $post) }}" method="POST" class="inline">
+              @csrf
+
+              <button class="text-blue-500">Like</button>
+            </form>
+          @endif
+        @endauth
+
+        <span>{{ $post->likes->count() }} {{ Str::plural('like', $post->likes->count()) }}</span>
+      </div>
+    @empty
       <p>No posts yet</p>
-    @endif
+    @endforelse
+
+    {{ $posts->links() }}
   </div>
 </div>
 @endsection
