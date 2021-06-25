@@ -33,4 +33,16 @@ class PostController extends Controller
 
         return back();
     }
+
+    
+    public function destroy(Post $post)
+    {
+        if (!$post->createdBy(auth()->user(), $post)) {
+            return abort(404);
+        }
+
+        $post->delete();
+        
+        return back();
+    }
 }

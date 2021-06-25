@@ -22,7 +22,7 @@ class PostLikeController extends Controller
 
     public function destroy(Post $post)
     {
-        if (! $post->likedBy(auth()->user())) {
+        if (!$post->likedBy(auth()->user())) {
             return abort(404);
         }
 
