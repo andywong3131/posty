@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
-class LikeController extends Controller
+class PostLikeController extends Controller
 {
     public function store(Post $post)
     {

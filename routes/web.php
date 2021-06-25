@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LikeController;
+use App\Http\Controllers\PostLikeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\DashboardController;
@@ -24,5 +24,5 @@ Route::post('/logout', LogoutController::class)->name('logout');
 Route::get('/posts', [PostController::class, 'index'])->name('posts');
 Route::post('/posts', [PostController::class, 'store']);
 
-Route::post('/user/like/{post}', [LikeController::class, 'store'])->name('posts.like');
-Route::delete('/user/unlike/{post}', [LikeController::class, 'destroy'])->name('posts.unlike');
+Route::post('/post/{post}/like', [PostLikeController::class, 'store'])->name('posts.like');
+Route::delete('/post/{post}/unlike', [PostLikeController::class, 'destroy'])->name('posts.unlike');
