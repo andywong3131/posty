@@ -37,9 +37,7 @@ class PostController extends Controller
     
     public function destroy(Post $post)
     {
-        if (!$post->createdBy(auth()->user(), $post)) {
-            return abort(404);
-        }
+        $this->authorize('delete', $post);
 
         $post->delete();
         

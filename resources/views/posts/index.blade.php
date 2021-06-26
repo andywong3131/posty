@@ -44,14 +44,14 @@
             </form>
           @endif
 
-          @if ($post->createdBy(auth()->user(), $post))
+          @can('delete', $post)
             <form action="{{ route('posts.delete', $post) }}" method="POST" class="inline">
               @csrf
 
               @method('DELETE')
               <button class="text-red-500">Delete</button>
             </form>
-          @endif
+          @endcan
         @endauth
 
         <span>{{ $post->likes->count() }} {{ Str::plural('like', $post->likes->count()) }}</span>
