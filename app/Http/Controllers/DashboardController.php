@@ -13,6 +13,10 @@ class DashboardController extends Controller
 
     public function __invoke()
     {
-        return view('dashboard');
+        $user = auth()->user();
+        
+        return view('dashboard', [
+            'user' => $user
+        ]);
     }
 }
