@@ -7,12 +7,13 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
+
     public function create()
     {
-        if (auth()->check()) {
-            return back();
-        }
-
         return view('auth.login');
     }
 
