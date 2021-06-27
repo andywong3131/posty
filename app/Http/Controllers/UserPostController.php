@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class UserPostController extends Controller
 {
-    public function index(User $user)
+    public function __invoke(User $user)
     {
         $posts = $user->posts()->with('user', 'likes')->latest()->paginate(5);
 

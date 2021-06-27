@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Post;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -25,7 +24,7 @@ class Post extends Model
         return $this->hasMany(Like::class);
     }
 
-    public function likedBy(User $user)
+    public function alreadyLikedBy(User $user)
     {
         return $this->likes->contains('user_id', $user->id);
     }

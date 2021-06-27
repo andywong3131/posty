@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
@@ -32,7 +31,7 @@ class RegisterController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'username' => $request->username,
-            'password' => Hash::make($request->password)
+            'password' => bcrypt($request->password)
         ]);
         
         auth()->attempt($request->only('email', 'password'));

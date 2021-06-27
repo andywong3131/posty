@@ -9,8 +9,8 @@ class PostLikeController extends Controller
 {
     public function store(Post $post)
     {
-        if ($post->likedBy(auth()->user())) {
-            return abort(404);
+        if ($post->alreadyLikedBy(auth()->user())) {
+            abort(401);
         }
 
         auth()->user()->likes()->create([
@@ -22,8 +22,8 @@ class PostLikeController extends Controller
 
     public function destroy(Post $post)
     {
-        if (! $post->likedBy(auth()->user())) {
-            return abort(404);
+        if (! $post->alreadyLikedBy(auth()->user())) {
+            abort(404);
         }
 
         auth()->user()->likes()->where('post_id', $post->id)->delete();

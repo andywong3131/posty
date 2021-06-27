@@ -14,11 +14,12 @@
     @auth
       <li class="m-5"><a href="">{{ auth()->user()->name }}</a></li>
       <li class="m-5">
-        <form action="{{ route('logout') }}" method="POST">
+        <form action="{{ route('logout') }}" method="POST" class="inline">
           @csrf
 
           <button>Logout</button>
         </form>
+      </li>
     @endauth
   </ul>
 </nav>
