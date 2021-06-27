@@ -10,4 +10,3 @@ Posty is a web app where you can post anything you want! Users also have the opt
 - User authentication/authorization
 - Ability to like/unlike posts
 - Delete own posts
-- Mail post owner whenever a user likes his/her post (using Mailtrap for testing email)
